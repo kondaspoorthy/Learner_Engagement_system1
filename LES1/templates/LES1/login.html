@@ -1,5 +1,15 @@
 {% extends "base2.html" %}
 {% block content %}
+<style> 
+  #Hash{
+     display:flex;
+     justify-content:space-between;
+   }
+   span{
+     font-weight:bold;
+   }
+ 
+ </style>
   <div class = "container-fluid">
     <div class="row mt-5">
         <div class="col-md-6  mx-auto my-auto">
@@ -25,6 +35,10 @@
                     {% for error in form.non_field_errors %} 
                     <p class = "text-danger">{{error}}</p>
                     {% endfor %}
+                    <div id="Hash">
+                      <span >Don't Have an Account</span>
+                       <a href="/LES1/Register">Register</a>
+                    </div>
                     <div class ="form-group  text-center">
                       <input class ='btn-btn-primary' type ="submit" value ="Login">
                     </div>   
