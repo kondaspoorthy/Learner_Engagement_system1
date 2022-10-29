@@ -37,4 +37,6 @@ def register_users(request):
         return render(request,'LES1/Registration.html',context)
 def sampleview(request):
     return HttpResponse('you are looking at me')
+def introduction_users(request):
+    return render(request,'LES1/introduction.html')
 

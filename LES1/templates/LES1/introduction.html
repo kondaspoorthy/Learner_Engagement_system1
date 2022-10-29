@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>landing page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <style>
+            .img_shadow{
+                border: 1px solid #000000;
+                box-sizing: border-box;
+                box-shadow: 10px 10px 4px 10px #312c2c;
+                border-radius: 40px;
+
+            }
+            .text_shadow{
+                background: #F6E2E2;
+                box-shadow: 10px 10px 4px #AF9191;
+                border-radius: 40px;
+            }
+            .desired_margin{
+                margin: 25px;
+            }
+            body{
+            font-family: serif;
+            }
+            
+            .headersty{
+        display:flex;
+        justify-content: center;
+        width:100%;
+
+    }
+        </style>
+    </head>
+    <body>
+        <div style="display:flex;background-color: #F6E2E2;box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25 )">
+            {% load static %}
+            <img src="{% static 'LES1/croplogo.png' %}"  alt="logo";>
+            <div class="headersty">
+              <h1  style="margin: 20px;font-weight:bold;color: #313356; 
+              text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">Learner Engagement system</h1>
+            </div>
+          </div>
+        <!-- </div> -->
+        <div class="container" >
+           <div class="row" style="margin:25px"> 
+                <div class="col-md-8" ><h2 style="margin:5px"> About LES</h2></div>
+                <div class="col-md-4 ">
+                    <div class="btn-group gap-2 d-md-flex justify-content-md-end" style="margin:10px;">
+                        <a href="/LES1/Registration.html" class="btn btn-primary" style="background-color:#313356";">Register</a>
+                        <a href="/framework/login.html" class="btn btn-primary" style="background-color:#313356">Log in</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <div class="container">    
+        <div class="row">   
+            <div class="col-md-4 text_shadow" style="background-color:#F6E2E2; height: 400px;" >
+                <p style="font-size: x-large;margin: 50px;"><br>
+                    Find an Accountability partner, <br>
+                    Set individual/combined goals<br>
+                    and achieve them!</p>
+            </div>
+            <div class="col-md-8" style="padding-left: 0px;">
+                    {% load static%}
+                    <img src="{% static 'LES1/introduction.jpg' %}" class="img_shadow img-fluid rounded-sm float-end border-start-0" alt="img" width="80%" height="100%">
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
