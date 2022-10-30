@@ -29,11 +29,15 @@ def login_users(request):
         return render(request,'LES1/login.html',{'form':form1})
 
 def register_users(request):
+    form1 = UserForm()
+    context = {
+                'form':form1,
+        }
     if request.method == 'POST':
         user_details  = RegisterForm(request.POST)
         if user_details.is_valid():
             user_details.save()
-            return HttpResponse("Your Data is succesfully submitted")
+            return  render(request,'LES1/login.html',{'form':form1})
         else:
              return render(request,'LES1/Registration.html',{'form':user_details})
     else:
@@ -49,5 +53,13 @@ def logout_users(request):
     print("Hi Iam Logout")
     if "name" in request.session:
         del request.session["name"]
-    return HttpResponse("You are logged out")
+    return render(request,'LES1/introduction.html')
+
+
+
+def introduction_users(request):
+    if "name" in request.session:
+            return render(request,'base1.html')  
+    return render(request,'LES1/introduction.html')
+
 
