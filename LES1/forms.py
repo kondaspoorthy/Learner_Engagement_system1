@@ -1,7 +1,9 @@
 from socket import fromshare
+from datetime import date
 from django.forms import ModelForm
 from django import forms
 import datetime
+from django.db.models import Q
 from .models import UserData
 from django.forms import ModelForm, TextInput, EmailInput,DateInput
 from django.core.exceptions import ValidationError
@@ -74,7 +76,7 @@ class RegisterForm(ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         password1 = cleaned_data.get("password")
-        password2 = cleaned_data.get("re_password")   
+        password2 = cleaned_data.get("re_password")
         if not passwords_match(password1,password2):
             raise forms.ValidationError("Password's dont match")
         firstname = cleaned_data.get("first_name")
