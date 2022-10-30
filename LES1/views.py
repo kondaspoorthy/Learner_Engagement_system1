@@ -25,7 +25,10 @@ def login_users(request):
     else:
         form1 = UserForm()
         if "name" in request.session:
-            return render(request,'base1.html')
+            context = {
+                    "user1":request.session["name"]
+                }
+            return render(request,'base1.html',context)
         return render(request,'LES1/login.html',{'form':form1})
 
 def register_users(request):

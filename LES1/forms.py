@@ -49,7 +49,7 @@ class RegisterForm(ModelForm):
                 'date_of_birth': DateInput(attrs={
                
                 'class': "form-control",
-                'placeholder': 'Date_of_Birth'
+                'placeholder': 'yyyy-mm-d'
             }),
             'password': TextInput(attrs={
                 'class': "form-control",
