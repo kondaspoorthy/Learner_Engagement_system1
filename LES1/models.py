@@ -40,8 +40,8 @@ class Event(models.Model):
     def previous_events(self,Day1,time1):
         if Day1 < date.today():
             return True
-        elif time1 < datetime.now().time():
-            return True
+        # elif time1 < datetime.now().time():
+        #     return True
     def clean(self):
         if self.end_time <= self.start_time:
             raise ValidationError('Ending times must after starting times')
