@@ -40,8 +40,8 @@ class Event(models.Model):
     def previous_events(self,Day1,time1):
         if Day1 < date.today():
             return True
-        elif time1 < datetime.now().time():
-            return True
+        # elif time1 < datetime.now().time():
+        #     return True
     def clean(self):
         if self.end_time <= self.start_time:
             raise ValidationError('Ending times must after starting times')
@@ -53,3 +53,24 @@ class Event(models.Model):
                         'There is an overlap with another event')
         if  self.previous_events(self.Day,self.start_time):
             raise ValidationError("You can't add events for previous days")
+
+# models for discussion-page
+class forum(models.Model):
+    name=models.CharField(max_length=200,default="anonymous" )
+    # email=models.CharField(max_length=200,null=True)
+    topic= models.CharField(max_length=300)
+    Question = models.CharField(max_length=1000,blank=True)
+    # link = models.CharField(max_length=100 ,null =True)
+    date_created=models.DateTimeField(auto_now_add=True,null=True)
+    
+    def __str__(self):
+        return str(self.topic)
+
+#child model
+class Discussion(models.Model):
+    forum = models.ForeignKey(forum,blank=True,on_delete=models.CASCADE)
+    username=models.CharField(max_length=200,default="anonymous" )
+    discuss = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return str(self.forum)

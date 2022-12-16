@@ -1,0 +1,28 @@
+<head>
+    <style>
+        form{
+            border:4px solid black;
+            margin: 0 auto;
+            padding: 40px;
+            width: fit-content;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+    
+</head>
+<form action="{% url 'LES1:addInDiscussion' %}" method="POST" novalidate>
+    {% csrf_token %}
+    <div class ="form-group">
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.label_tag }} 
+            {{ field }}
+            <p class="text-danger">{{ field.errors.as_text }}</p>
+
+        </div>
+        {% endfor %}  
+        {% for error in form.non_field_errors %} 
+        <p class = "text-danger">{{error}}</p>
+        {% endfor %}
+    <input type="submit" class="btn btn-success" value="submit">
+</form>
