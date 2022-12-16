@@ -10,6 +10,8 @@ from django.forms import ModelForm, TextInput, EmailInput,DateInput
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
+from .models import *
+
 def passwords_match(x,y):
     return x == y
 class UserForm(forms.Form):
@@ -112,6 +114,20 @@ class RegisterForm(ModelForm):
         if UserData.objects.filter(Q(first_name=firstname)|Q(last_name=lastname)|Q(email_id=email)|Q(password=password1)):
             raise forms.ValidationError("User Already Registered") 
         return cleaned_data
+    
+# forms for discussion page
+
+
+class CreateInForum(ModelForm):
+    class Meta:
+        model= forum
+        fields = "__all__"
+
+
+class CreateInDiscussion(ModelForm):
+    class Meta:
+        model= Discussion
+        fields = "__all__"
         
        
        

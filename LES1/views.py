@@ -9,6 +9,9 @@ from django.http import HttpResponse
 from django.views import generic
 from datetime import date, datetime,timedelta
 import calendar
+from .models import * 
+from LES1.forms import * 
+
 
 # Create your views here.
 def create_events(request):
@@ -132,3 +135,37 @@ class EventEdit(generic.UpdateView):
     template_name = "event1.html"
 
 
+# discussions
+
+def home(request):
+    forums=forum.objects.all().order_by('-date_created')[:5]
+
+    count=forums.count()
+    discussions=[]
+    for i in forums:
+        discussions.append(i.discussion_set.all())
+    # discussions.reverse()
+    context={'forums':forums,
+              'count':count,
+              'discussions':discussions}
+    return render(request,'home.html',context)
+
+def addInForum(request):
+    form = CreateInForum()
+    if request.method == 'POST':
+        form = CreateInForum(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/LES1/home')
+    context ={'form':form}
+    return render(request,'addInForum.html',context)
+
+def addInDiscussion(request):
+    form = CreateInDiscussion()
+    if request.method == 'POST':
+        form = CreateInDiscussion(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/LES1/home')
+    context ={'form':form}
+    return render(request,'addInDiscussion.html',context)
