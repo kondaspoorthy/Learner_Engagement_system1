@@ -96,10 +96,8 @@ def login_users(request):
         return render(request,'LES1/login.html',{'form':form1})
 
 def register_users(request):
-    form1 = UserForm()
-    context = {
-                'form':form1, 
-        }
+    form2 = EventForm()
+    form1 = RegisterForm()
     if request.method == 'POST':
         user_details  = RegisterForm(request.POST)
         if user_details.is_valid():
@@ -109,12 +107,11 @@ def register_users(request):
              return render(request,'LES1/Registration.html',{'form':user_details})
     else:
         if "name" in request.session:
-            return render(request,'base1.html')
-        form1 = RegisterForm()
-        context = {
-                'form':form1,
-        }
-    return render(request,'LES1/Registration.html',context)
+            user1 =  request.session["name"]
+            value = calendar1(request,user1)
+            html_cal = mark_safe(value[0])
+            return render(request,'base1.html',{"user1":user1,"form":form2,'calendar':html_cal,'prev_month':value[1],'next_month':value[2]})
+        return render(request,'LES1/Registration.html',{'form':form1})
 
 def logout_users(request):
     print("Hi Iam Logout")
