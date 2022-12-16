@@ -138,12 +138,13 @@ class EventEdit(generic.UpdateView):
 # discussions
 
 def home(request):
-    forums=forum.objects.all()
+    forums=forum.objects.all().order_by('-date_created')[:5]
+
     count=forums.count()
     discussions=[]
     for i in forums:
         discussions.append(i.discussion_set.all())
-
+    # discussions.reverse()
     context={'forums':forums,
               'count':count,
               'discussions':discussions}

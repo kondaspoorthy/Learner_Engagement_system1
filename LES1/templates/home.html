@@ -112,22 +112,22 @@
       <!-- <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#post"style=";margin-left:1%; margin-top: 3%;">Post</button><br> -->
     <!-- </div> -->
 
-        <div class="card-columns" style="padding: 10px; margin: 10px;"></div>    
+        <div class="card-columns" style="padding: 5px; margin: 5px;"></div>    
             {%for forum in forums %}
                 <div class="card box container">
                     <br>
                     <h5 class="card-title">
-                        <!-- <a href='{{forum.link}}'> -->
-                        <h3>{{forum.topic}}</h3></a> 
-                        <div class="card-body container">
-                          <p>{{forum.description}}</p>
-                            </h5>
-                            <hr>
-                            <p>{{forum.name}}</p>
-                            {{forum.Question}}<br>
+                        {{forum.Question}}
+                      </h5>
+                    <!-- {{forum.description}}  -->
+                    <div class="card-body container">
+                      <p style="color: rgb(255, 0, 93);"> Forum Topic: {{forum.topic}}</p>
+                            <!-- <hr> -->
+                            <p>By: {{forum.name}}</p>
+                            <br>
                             <!-- Date: {{forum.date_created} -->
                             <hr>     
-                            <h3>Answers</h3>
+                            <h4>Answers</h4>
                             {%for discuss in discussions%}
                             {%for objs in discuss%}  
                             {% if objs.forum == forum %}
