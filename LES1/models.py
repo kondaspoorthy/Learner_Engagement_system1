@@ -61,7 +61,7 @@ class forum(models.Model):
     topic= models.CharField(max_length=300)
     Question = models.CharField(max_length=1000,blank=True)
     # link = models.CharField(max_length=100 ,null =True)
-    date_created=models.DateField()
+    # date_created=models.DateField(default=date.today())
     
     def __str__(self):
         return str(self.topic)

@@ -138,7 +138,7 @@ class EventEdit(generic.UpdateView):
 # discussions
 
 def home(request):
-    forums=forum.objects.all().order_by('-date_created')[:5]
+    forums=forum.objects.all()
 
     count=forums.count()
     discussions=[]
