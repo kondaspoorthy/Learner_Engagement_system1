@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="clearfix">
+            <a class="btn btn-primary left" href="{% url 'LES1:login' %}"> Scheduler </a>
+        <div class="clearfix">
+            <h3>Event Name: {{ event.Tittle }}</h3>
+            <p>Event on {{ event.Day}}</p>
+            <p>From <span style="color: gray;">{{ event.start_time }}</span> To <span style="color: gray;">{{ event.end_time }}</span></p>
+            <p>{{ event.Description  }}</p>
+        </div>
+    </div>
+    <div class="clearfix">
+        
+    </div>
+</body>
+</html>
