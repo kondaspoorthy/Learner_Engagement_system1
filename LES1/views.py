@@ -122,8 +122,12 @@ def logout_users(request):
 
 
 def introduction_users(request):
+    form2 = EventForm()
     if "name" in request.session:
-            return render(request,'base1.html')  
+        user1 =  request.session["name"]
+        value = calendar1(request,user1)
+        html_cal = mark_safe(value[0])
+        return render(request,'base1.html',{"user1":user1,"form":form2,'calendar':html_cal,'prev_month':value[1],'next_month':value[2]})  
     return render(request,'LES1/introduction.html')
 
 class EventEdit(generic.UpdateView):
@@ -136,7 +140,6 @@ class EventEdit(generic.UpdateView):
 
 def home(request):
     forums=forum.objects.all().order_by('-date_created')[:5]
-
     count=forums.count()
     discussions=[]
     for i in forums:
