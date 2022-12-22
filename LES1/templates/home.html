@@ -43,11 +43,11 @@
                 {% load static %}
                 <img src= "{% static 'LES1/croplogo.png' %}" width="50px" height="50px"> </a>
             </li>
-          <li class="nav-item ">
+
             <a class="nav-link active d_padding" aria-current="page" href="">Dashboard</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link d_padding" aria-current="page"  href="">Scheduler</a>
+              <a class="nav-link d_padding" aria-current="page"  href="{% url 'LES1:login'}">Scheduler</a>
             </li>
             <li class="nav-item">
               <a class="nav-link d_padding" aria-current="page" href="">Meeting Room</a>

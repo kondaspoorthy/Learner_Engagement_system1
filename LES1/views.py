@@ -145,9 +145,8 @@ def home(request):
     discussions=[]
     for i in forums:
         discussions.append(i.discussion_set.all())
-    # discussions.reverse()
     context={'forums':forums,
-              'count':count,
+
               'discussions':discussions}
     return render(request,'home.html',context)
 
