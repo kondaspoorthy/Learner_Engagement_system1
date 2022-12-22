@@ -62,15 +62,13 @@ class forum(models.Model):
     Question = models.CharField(max_length=1000,blank=True)
     # link = models.CharField(max_length=100 ,null =True)
     #date_created=models.DateField(default=date.today(default=date.today()))
-    
     def __str__(self):
-        return str(self.topic)
+        return str(self.Question)
 
 #child model
 class Discussion(models.Model):
     forum = models.ForeignKey(forum,blank=True,on_delete=models.CASCADE)
     username=models.CharField(max_length=200,default="anonymous" )
     discuss = models.CharField(max_length=1000)
-
     def __str__(self):
         return str(self.forum)
